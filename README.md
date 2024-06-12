@@ -12,7 +12,7 @@ ToggleSwitch는 특정 문자열을 대응되는 문자열로 토글하는 기�
 - `InitEvent` ↔ `RemoveEvent`
 - `+=` ↔ `-=`
 
-## Visual Studio에서 Visual Commander를 이용해 커맨드를 단축키로 등록하는 방법
+## Visual Studio에서 단축키로 등록하는 방법
 
 ### 1. Visual Commander 설치 및 커맨드 생성
 1. Visual Studio를 실행합니다.
