@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SerializableSnippets xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <commands>
+    <Snippet>
+      <id>1</id>
+      <name>ToggleSwitch</name>
+      <code>using EnvDTE;
+using EnvDTE80;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+
+public class C : VisualCommanderExt.ICommand
+{
+    public void Run(DTE2 DTE, Microsoft.VisualStudio.Shell.Package package)
+    {
+        TextSelection selection = (TextSelection)DTE.ActiveDocument.Selection;
+        string selectedText = selection.Text;
+
+        var toggleDictionary = new Dictionary&lt;string, string&gt;
+        {
+            { "true", "false" },
+            { "InitEvent", "RemoveEvent" },
+            { "OnEnable", "OnDisable" },
+            { "public", "private" },
+            { "x", "y" },
+            { "width", "height" },
+            { "AddEventListener", "RemoveEventListener" },
+            { "+=", "-=" },
+
+        };
+
+        if (toggleDictionary.ContainsKey(selectedText))
+        {
+            selection.Text = toggleDictionary[selectedText];
+        }
+        else if (toggleDictionary.ContainsValue(selectedText))
+        {
+            foreach (var entry in toggleDictionary)
+            {
+                if (entry.Value == selectedText)
+                {
+                    selection.Text = entry.Key;
+                    break;
+                }
+            }
+        }
+    }
+}
+</code>
+      <referencedAssemblies />
+      <type>Command</type>
+      <lang>CS</lang>
+      <langVersion>v4.0</langVersion>
+      <enabled>true</enabled>
+      <includeDebugInformation>false</includeDebugInformation>
+    </Snippet>
+  </commands>
+  <extensions />
+  <commonCode />
+</SerializableSnippets>
