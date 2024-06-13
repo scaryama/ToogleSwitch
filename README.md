@@ -12,7 +12,7 @@ ToggleSwitch는 특정 문자열을 대응되는 문자열로 토글하는 기�
 - `InitEvent` ↔ `RemoveEvent`
 - `+=` ↔ `-=`
 
-## Visual Studio에서 Visual Commander를 이용해 커맨드를 단축키로 등록하는 방법
+## Visual Studio에서 단축키로 등록하는 방법
 
 ### 1. Visual Commander 설치 및 커맨드 생성
 1. Visual Studio를 실행합니다.
@@ -28,6 +28,6 @@ ToggleSwitch는 특정 문자열을 대응되는 문자열로 토글하는 기�
 2. `Environment > Keyboard`를 선택합니다.
 3. `Show commands containing` 입력란에 `VCmd.Command01`를 입력합니다.
 4. 검색 결과에서 해당 커맨드를 선택합니다.
-5. `Press shortcut keys` 입력란에 사용할 단축키를 입력합니다.
+5. `Press shortcut keys` 입력란에 사용할 단축키를 입력합니다. (예: Alt+Shift+S)
 6. `Assign` 버튼을 클릭하여 단축키를 할당합니다.
 7. `OK`를 클릭하여 설정을 저장합니다.
