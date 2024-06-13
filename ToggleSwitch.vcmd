@@ -1,13 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<SerializableSnippets xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <commands>
-    <Snippet>
-      <id>1</id>
-      <name>ToggleSwitch</name>
-      <code>using EnvDTE;
+﻿using EnvDTE;
 using EnvDTE80;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 public class C : VisualCommanderExt.ICommand
 {
@@ -16,7 +9,7 @@ public class C : VisualCommanderExt.ICommand
         TextSelection selection = (TextSelection)DTE.ActiveDocument.Selection;
         string selectedText = selection.Text;
 
-        var toggleDictionary = new Dictionary&lt;string, string&gt;
+        var toggleDictionary = new Dictionary<string, string>
         {
             { "true", "false" },
             { "InitEvent", "RemoveEvent" },
@@ -25,9 +18,21 @@ public class C : VisualCommanderExt.ICommand
             { "x", "y" },
             { "width", "height" },
             { "AddEventListener", "RemoveEventListener" },
+            { "AddListener", "RemoveListener" },
             { "+=", "-=" },
-
+            { "Key", "Value" },
         };
+
+        if (string.IsNullOrEmpty(selectedText))
+        {
+			// 현재 커서 위치에서 단어 선택
+			selection.WordLeft(true);
+			string word = selection.Text;
+			selection.StartOfLine();
+			selection.FindText(word);
+			selection.WordRight(true);
+			selectedText = selection.Text;
+        }
 
         if (toggleDictionary.ContainsKey(selectedText))
         {
@@ -46,15 +51,3 @@ public class C : VisualCommanderExt.ICommand
         }
     }
 }
-</code>
-      <referencedAssemblies />
-      <type>Command</type>
-      <lang>CS</lang>
-      <langVersion>v4.0</langVersion>
-      <enabled>true</enabled>
-      <includeDebugInformation>false</includeDebugInformation>
-    </Snippet>
-  </commands>
-  <extensions />
-  <commonCode />
-</SerializableSnippets>
